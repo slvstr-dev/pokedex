@@ -1,27 +1,47 @@
 {
   "name": "pokedex",
+  "description": "A comprehensive Pokédex clone, providing detailed information on Pokémon species, abilities, and stats, with a user-friendly interface.",
+  "author": "Sylvester Hofstra <hello@slvstr.dev>",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "format": "prettier --check \"**/*.{js,ts,tsx,md}\"",
+    "format:fix": "prettier --write \"**/*.{js,ts,tsx,md}\"",
+    "types": "tsc --noEmit",
+    "types:watch": "tsc --noEmit --watch",
+    "check": "pnpm types && pnpm lint && pnpm format",
+    "upgrade": "pnpm upgrade --interactive",
+    "upgrade:latest": "pnpm upgrade --interactive --latest"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.2",
+    "@vercel/analytics": "^1.1.1",
+    "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.3"
+    "react-hook-form": "^7.48.2",
+    "tailwind-variants": "^0.1.18",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
+    "clsx": "^2.0.0",
     "eslint": "^8",
-    "eslint-config-next": "14.0.3"
-  }
+    "eslint-config-next": "14.0.3",
+    "postcss": "^8",
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "tailwind-merge": "^2.0.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@8.10.2"
 }
