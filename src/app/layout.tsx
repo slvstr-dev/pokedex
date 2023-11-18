@@ -4,6 +4,7 @@ import '@/assets/styles/globals.css';
 import { fonts } from '@/constants/fonts';
 import type { PropsWithChildren } from 'react';
 import { Analytics } from '@vercel/analytics/react';
+import { NavigationBar } from '@/components/layout/NavigationBar/NavigationBar';
 
 export interface RootLayoutProps extends PropsWithChildren {}
 
@@ -16,7 +17,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={fonts}>
-      <body>{children}</body>
+      <body>
+        <div className="grid grid-cols-12">
+          <NavigationBar className="col-span-2" />
+
+          <div className="col-span-10">{children}</div>
+        </div>
+      </body>
 
       <Analytics />
     </html>
