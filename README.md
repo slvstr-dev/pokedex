@@ -2,7 +2,7 @@
 
 Welcome to our Pokédex clone, a feature-rich application that allows you to explore the vast world of Pokémon, offering detailed insights into each species, their abilities, and stats through an intuitive and visually appealing interface.
 
-![Screenshot of project](https://raw.githubusercontent.com/slvstr-dev/portfolio/master/screenshot.png)
+![Screenshot of project](https://raw.githubusercontent.com/slvstr-dev/pokedex/master/screenshot.png)
 
 ## Overview
 
