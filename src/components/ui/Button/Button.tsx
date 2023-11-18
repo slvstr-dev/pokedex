@@ -1,6 +1,5 @@
 import type { ButtonHTMLAttributes, AnchorHTMLAttributes, HTMLAttributes } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { Icon } from './Icon/Icon';
 
 type ButtonVariants = VariantProps<typeof button>;
 
