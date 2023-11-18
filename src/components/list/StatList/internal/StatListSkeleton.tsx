@@ -6,21 +6,9 @@ export interface StatListSkeletonProps {
 
 export const StatListSkeleton = ({ className }: StatListSkeletonProps) => {
   return (
-    <div className={cn('', className)}>
+    <div className={cn('flex flex-col gap-2', className)}>
       {Array.from({ length: 5 }, (_, i) => {
-        return (
-          <div
-            key={i}
-            className="mx-auto w-full max-w-sm rounded-md border border-blue-300 p-4 shadow">
-            <div className="flex animate-pulse space-y-6">
-              <div className="h-2 rounded bg-slate-700" />
-
-              <div className="h-2 rounded bg-slate-700" />
-
-              <div className="h-2 rounded bg-slate-700" />
-            </div>
-          </div>
-        );
+        return <div key={i} className="h-8 animate-pulse rounded-md bg-gray-300" />;
       })}
     </div>
   );
