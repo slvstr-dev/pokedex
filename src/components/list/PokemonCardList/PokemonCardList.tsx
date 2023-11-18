@@ -4,7 +4,7 @@ import { cn } from '@/utils/tailwindUtils';
 import { PokemonCard } from '@/components/ui/PokemonCard/PokemonCard';
 import { pokemonListAtom } from '@/atoms/pokemonListAtom';
 import { useAtom } from 'jotai';
-import { PokemonDialog } from '@/components/dialogs/PokemonDialog/PokemonDialog';
+import { PokemonDialog } from '@/components/dialog/PokemonDialog/PokemonDialog';
 
 export interface PokemonCardListProps {
   className?: string;

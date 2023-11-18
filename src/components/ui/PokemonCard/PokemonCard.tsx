@@ -1,4 +1,4 @@
-import { PokemonDialog } from '@/components/dialogs/PokemonDialog/PokemonDialog';
+import { PokemonDialog } from '@/components/dialog/PokemonDialog/PokemonDialog';
 import { cn } from '@/utils/tailwindUtils';
 
 export interface PokemonCardProps {
