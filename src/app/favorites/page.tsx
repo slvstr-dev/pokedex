@@ -1,7 +1,13 @@
+import { FavoritesList } from '@/components/list/FavoritesList/FavoritesList';
+import { FavoritesListSkeleton } from '@/components/list/FavoritesList/internal/FavoriteListSkeleton';
+import { Suspense } from 'react';
+
 export default function FavoritesPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center">
-      <h1 className="text-5xl font-semibold">FavoritesPage</h1>
+    <main>
+      <Suspense fallback={<FavoritesListSkeleton />}>
+        <FavoritesList />
+      </Suspense>
     </main>
   );
 }
