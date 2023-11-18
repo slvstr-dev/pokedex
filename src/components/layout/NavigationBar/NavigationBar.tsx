@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/ui/Button/Button';
 import { cn } from '@/utils/tailwindUtils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -15,16 +16,14 @@ export const NavigationBar = ({ className }: NavigationBarProps) => {
     <nav className={cn('border-r border-black', className)}>
       <ul>
         <li>
-          <Link className={cn('text-black', pathname === '/' ? 'text-red-500' : '')} href="/">
-            Pokédex
+          <Link href="/">
+            <Button isActive={pathname === '/'}>Pokédex</Button>
           </Link>
         </li>
 
         <li>
-          <Link
-            className={cn('text-black', pathname === '/favorites' ? 'text-red-500' : '')}
-            href="/favorites">
-            My favorites
+          <Link href="/favorites">
+            <Button isActive={pathname === '/favorites'}>My favorites</Button>
           </Link>
         </li>
       </ul>
