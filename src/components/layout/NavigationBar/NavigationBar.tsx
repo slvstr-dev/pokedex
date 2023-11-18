@@ -1,6 +1,9 @@
 'use client';
 
+import { navigationBarAtom } from '@/atoms/navigationBarAtom';
+import { Button } from '@/components/ui/Button/Button';
 import { cn } from '@/utils/tailwindUtils';
+import { useAtom } from 'jotai';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -9,25 +12,31 @@ export interface NavigationBarProps {
 }
 
 export const NavigationBar = ({ className }: NavigationBarProps) => {
+  const [hasNavigationBar] = useAtom(navigationBarAtom);
   const pathname = usePathname();
 
   return (
-    <nav className={cn('border-r border-black', className)}>
-      <ul>
-        <li>
-          <Link className={cn('text-black', pathname === '/' ? 'text-red-500' : '')} href="/">
-            Pokédex
-          </Link>
-        </li>
+    <aside
+      className={cn(
+        'fixed left-0 top-0 z-40 mt-[72px] h-screen w-64 border-r border-gray-200 bg-white transition-transform',
+        hasNavigationBar ? 'translate-x-0' : '-translate-x-full',
+        className,
+      )}>
+      <nav className="h-full overflow-y-auto bg-white">
+        <ul>
+          <li>
+            <Link href="/">
+              <Button isActive={pathname === '/'}>Pokédex</Button>
+            </Link>
+          </li>
 
-        <li>
-          <Link
-            className={cn('text-black', pathname === '/favorites' ? 'text-red-500' : '')}
-            href="/favorites">
-            My favorites
-          </Link>
-        </li>
-      </ul>
-    </nav>
+          <li>
+            <Link href="/favorites">
+              <Button isActive={pathname === '/favorites'}>My favorites</Button>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </aside>
   );
 };

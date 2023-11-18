@@ -5,6 +5,9 @@ import { fonts } from '@/constants/fonts';
 import type { PropsWithChildren } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { NavigationBar } from '@/components/layout/NavigationBar/NavigationBar';
+import { Header } from '@/components/layout/Header/Header';
+import { SearchForm } from '@/components/form/SearchForm/SearchForm';
+import { Content } from '@/components/layout/Content/Content';
 
 export interface RootLayoutProps extends PropsWithChildren {}
 
@@ -18,11 +21,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={fonts}>
       <body>
-        <div className="grid grid-cols-12">
-          <NavigationBar className="col-span-2" />
+        <Header />
 
-          <div className="col-span-10">{children}</div>
-        </div>
+        <NavigationBar />
+
+        <Content>
+          <SearchForm className="w-1/2 self-center" />
+
+          {children}
+        </Content>
       </body>
 
       <Analytics />
