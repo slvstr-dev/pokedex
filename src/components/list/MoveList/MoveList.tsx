@@ -1,22 +1,19 @@
 import { cn } from '@/utils/tailwindUtils';
 import { Tag } from '@/components/ui/Tag/Tag';
-
-export type Move = {
-  name: string;
-  type: string;
-};
-
+import { getPokemon } from '@/services/pokemonService';
 export interface MoveListProps {
   className?: string;
-  moves: Move[];
+  index: number;
 }
 
-export const MoveList = ({ className, moves }: MoveListProps) => {
+export const MoveList = async ({ className, index }: MoveListProps) => {
+  const pokemon = await getPokemon(index);
+
   return (
-    <div className={cn('', className)}>
-      {moves.map((move, idx) => (
-        <Tag key={idx} label={move.name} variant={move.type} />
-      ))}
+    <div className={cn('flex flex-wrap gap-2', className)}>
+      {pokemon.moves.slice(0, 15).map((type, idx) => {
+        return <Tag key={idx} label={type.move.name} />;
+      })}
     </div>
   );
 };
