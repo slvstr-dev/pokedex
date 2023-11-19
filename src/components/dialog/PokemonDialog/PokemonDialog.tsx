@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 
 import { Suspense, useState, type PropsWithChildren } from 'react';
 
@@ -11,14 +12,16 @@ import { StatListSkeleton } from '@/components/list/StatList/internal/StatListSk
 import { MoveListSkeleton } from '@/components/list/MoveList/internal/MoveListSkeleton';
 import { MoveList } from '@/components/list/MoveList/MoveList';
 import { TypeListSkeleton } from '@/components/list/TypeList/internal/TypeListSkeleton';
+import { FavoriteToggle } from '@/components/ui/PokemonCard/internal/FavoriteToggle';
+import { getPokemon } from '@/services/pokemonService';
 
 export interface PokemonDialogProps extends PropsWithChildren {
   className?: string;
   name: string;
-  number: number;
+  index: number;
 }
 
-export function PokemonDialog({ className, children, name, number }: PokemonDialogProps) {
+export const PokemonDialog = ({ className, children, name, index }: PokemonDialogProps) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -27,12 +30,22 @@ export function PokemonDialog({ className, children, name, number }: PokemonDial
 
       <AnimatePresence>
         {open && (
-          <Dialog.Modal title={name} description={number}>
-            <div>
-              <div>Carousel</div>
+          <Dialog.Modal title={name} description={`#${index}`}>
+            <div className="grid grid-cols-12 gap-14">
+              <div className="relative col-span-4 flex aspect-square items-center justify-center rounded-xl bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-yellow-200 via-green-200 to-green-500">
+                <FavoriteToggle index={index} className="absolute right-4 top-4" />
 
-              <div>
-                <h2>Description</h2>
+                <Image
+                  width={150}
+                  height={150}
+                  className="h-40 w-40 object-contain"
+                  alt={`Sprite of ${name}`}
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`}
+                />
+              </div>
+
+              <div className="col-span-8 flex flex-col gap-4">
+                <h2 className="text-2xl font-bold capitalize">Description</h2>
 
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro id aliquid quam
@@ -42,39 +55,24 @@ export function PokemonDialog({ className, children, name, number }: PokemonDial
                 </p>
 
                 <Suspense fallback={<TypeListSkeleton />}>
-                  <TypeList types={[{ name: 'Electric', type: 'electric' }]} />
+                  <TypeList index={index} />
                 </Suspense>
               </div>
 
-              <div>
-                <div>
-                  <h3>Base stats</h3>
+              <div className="col-span-5 flex flex-col gap-4">
+                <h3 className="text-xl font-bold capitalize">Base stats</h3>
 
-                  <Suspense fallback={<StatListSkeleton />}>
-                    <StatList
-                      stats={[
-                        { label: 'HP', progress: 165, total: 300 },
-                        { label: 'ATK', progress: 181, total: 300 },
-                        { label: 'DEF', progress: 161, total: 300 },
-                        { label: 'SPD', progress: 206, total: 300 },
-                        { label: 'EXP', progress: 465, total: 1000 },
-                      ]}
-                    />
-                  </Suspense>
-                </div>
+                <Suspense fallback={<StatListSkeleton />}>
+                  <StatList index={index} />
+                </Suspense>
+              </div>
 
-                <div>
-                  <h3>Moves</h3>
+              <div className="col-span-7 flex flex-col gap-4">
+                <h3 className="text-xl font-bold capitalize">Moves</h3>
 
-                  <Suspense fallback={<MoveListSkeleton />}>
-                    <MoveList
-                      moves={[
-                        { name: 'Thunder', type: 'electric' },
-                        { name: 'Bite', type: 'normal' },
-                      ]}
-                    />
-                  </Suspense>
-                </div>
+                <Suspense fallback={<MoveListSkeleton />}>
+                  <MoveList index={index} />
+                </Suspense>
               </div>
             </div>
           </Dialog.Modal>
@@ -82,4 +80,4 @@ export function PokemonDialog({ className, children, name, number }: PokemonDial
       </AnimatePresence>
     </Dialog>
   );
-}
+};
