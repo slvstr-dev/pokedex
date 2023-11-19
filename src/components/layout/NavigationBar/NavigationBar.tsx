@@ -1,28 +1,27 @@
 'use client';
 
-import { navigationBarAtom } from '@/atoms/navigationBarAtom';
 import { Button } from '@/components/ui/Button/Button';
 import { cn } from '@/utils/tailwindUtils';
-import { useAtom } from 'jotai';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useStore } from '@/app/zustand/store';
 
 export interface NavigationBarProps {
   className?: string;
 }
 
 export const NavigationBar = ({ className }: NavigationBarProps) => {
-  const [hasNavigationBar] = useAtom(navigationBarAtom);
+  const { hasNavigationBar } = useStore((store) => store);
   const pathname = usePathname();
 
   return (
     <aside
       className={cn(
-        'fixed left-0 top-0 z-40 mt-[72px] h-screen w-64 border-r border-gray-200 bg-white transition-transform',
+        'fixed left-0 top-0 z-40 mt-[72px] h-screen w-64 bg-gray-200  transition-transform',
         hasNavigationBar ? 'translate-x-0' : '-translate-x-full',
         className,
       )}>
-      <nav className="h-full overflow-y-auto bg-white">
+      <nav className="h-full overflow-y-auto">
         <ul>
           <li>
             <Link href="/">
