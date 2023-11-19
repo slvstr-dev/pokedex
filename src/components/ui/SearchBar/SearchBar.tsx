@@ -11,16 +11,15 @@ export interface SearchBarProps {
 
 export const SearchBar = ({ className, placeholder, register }: SearchBarProps) => {
   return (
-    <div className={cn('flex justify-between border border-black bg-gray-100', className)}>
+    <div className={cn('flex justify-between rounded-full bg-white', className)}>
       <input
+        control-id="ControlID-1"
         placeholder={placeholder}
-        className="flex-grow truncate bg-gray-100 px-4 py-2 outline-none"
+        className="flex-grow truncate rounded-full bg-white px-4 py-2 outline-none"
         {...register}
       />
 
-      <button type="submit">
-        <Icon icon="Search" className="mx-2 flex-shrink-0" />
-      </button>
+      <Icon icon="Search" className="mx-3 flex-shrink-0 text-gray-400" />
     </div>
   );
 };
