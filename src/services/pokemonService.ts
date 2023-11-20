@@ -2,7 +2,9 @@ import type { Pokemon, PokemonList } from '@/types/pokemon';
 
 export const getPokemonList = async () => {
   try {
-    const response = await fetch(`http://${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}/api/pokemon`);
+    const response = await fetch(
+      `https://${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}/api/pokemon`,
+    );
 
     if (!response.ok) {
       throw new Error('Failed to fetch data');
@@ -21,7 +23,7 @@ export const getPokemonList = async () => {
 export const getPokemon = async (id: number) => {
   try {
     const response = await fetch(
-      `http://${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}/api/pokemon/${id}`,
+      `http:s//${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}/api/pokemon/${id}`,
     );
 
     if (!response.ok) {
