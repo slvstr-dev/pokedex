@@ -1,22 +1,21 @@
 'use client';
 
-import { navigationBarAtom } from '@/atoms/navigationBarAtom';
+import { useStore } from '@/app/zustand/store';
 import { cn } from '@/utils/tailwindUtils';
-import { useAtom } from 'jotai';
 import type { PropsWithChildren } from 'react';
 
-export interface ContentProps extends PropsWithChildren {
+export interface MainProps extends PropsWithChildren {
   className?: string;
 }
 
-export const Content = ({ className, children }: ContentProps) => {
-  const [hasNavigationBar] = useAtom(navigationBarAtom);
+export const Content = ({ className, children }: MainProps) => {
+  const { hasNavigationBar } = useStore();
 
   return (
     <main
       className={cn(
-        'mt-[72px] flex flex-col gap-10 p-4 transition-all',
-        hasNavigationBar ? 'pl-64' : 'pl-0',
+        'mt-[72px] p-4 transition-all sm:p-8',
+        hasNavigationBar ? 'sm:ml-64' : 'ml-0',
         className,
       )}>
       {children}

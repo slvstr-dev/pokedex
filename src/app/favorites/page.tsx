@@ -1,13 +1,14 @@
-import { FavoritesList } from '@/components/list/FavoritesList/FavoritesList';
-import { FavoritesListSkeleton } from '@/components/list/FavoritesList/internal/FavoriteListSkeleton';
+import { PokemonCardList } from '@/components/list/PokemonCardList/PokemonCardList';
+import { PokemonCardListSkeleton } from '@/components/list/PokemonCardList/internal/PokemonCardListSkeleton';
+import { getPokemonList } from '@/services/pokemonService';
 import { Suspense } from 'react';
 
-export default function FavoritesPage() {
+export default async function FavoritesPage() {
+  const pokemonList = await getPokemonList();
+
   return (
-    <main>
-      <Suspense fallback={<FavoritesListSkeleton />}>
-        <FavoritesList />
-      </Suspense>
-    </main>
+    <Suspense fallback={<PokemonCardListSkeleton />}>
+      <PokemonCardList pokemonList={pokemonList} showFavorites />
+    </Suspense>
   );
 }

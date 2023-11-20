@@ -1,14 +1,14 @@
-import { PokemonDialog } from '@/components/dialog/PokemonDialog/PokemonDialog';
 import { PokemonCardList } from '@/components/list/PokemonCardList/PokemonCardList';
 import { PokemonCardListSkeleton } from '@/components/list/PokemonCardList/internal/PokemonCardListSkeleton';
+import { getPokemonList } from '@/services/pokemonService';
 import { Suspense } from 'react';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const pokemonList = await getPokemonList();
+
   return (
-    <main>
-      <Suspense fallback={<PokemonCardListSkeleton />}>
-        <PokemonCardList />
-      </Suspense>
-    </main>
+    <Suspense fallback={<PokemonCardListSkeleton />}>
+      <PokemonCardList pokemonList={pokemonList} />
+    </Suspense>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import '@/assets/styles/globals.css';
 
 import { fonts } from '@/constants/fonts';
-import type { PropsWithChildren } from 'react';
+import { Suspense, type PropsWithChildren } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { NavigationBar } from '@/components/layout/NavigationBar/NavigationBar';
 import { Header } from '@/components/layout/Header/Header';
@@ -20,16 +20,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={fonts}>
-      <body>
+      <body className="bg-gray-100 text-gray-800">
         <Header />
 
         <NavigationBar />
 
-        <Content>
-          <SearchForm className="w-1/2 self-center" />
-
-          {children}
-        </Content>
+        <Content>{children}</Content>
       </body>
 
       <Analytics />

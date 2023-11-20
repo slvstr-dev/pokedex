@@ -1,21 +1,18 @@
 import { Tag } from '@/components/ui/Tag/Tag';
+import { getPokemon } from '@/services/pokemonService';
 import { cn } from '@/utils/tailwindUtils';
-
-export type Type = {
-  name: string;
-  type: string;
-};
-
 export interface TypeListProps {
   className?: string;
-  types: Type[];
+  index: number;
 }
 
-export const TypeList = ({ className, types }: TypeListProps) => {
+export const TypeList = async ({ className, index }: TypeListProps) => {
+  const pokemon = await getPokemon(index);
+
   return (
-    <div className={cn('', className)}>
-      {types.map((type, idx) => {
-        return <Tag key={idx} label={type.name} variant={type.type} />;
+    <div className={cn('flex flex-wrap gap-2', className)}>
+      {pokemon.types.map((type, idx) => {
+        return <Tag key={idx} label={type.type.name} />;
       })}
     </div>
   );

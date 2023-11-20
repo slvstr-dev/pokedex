@@ -50,7 +50,7 @@ export function Modal({ children, className, title, description }: ModalProps) {
             y: '50%',
           }}
           className={cn(
-            'fixed z-50 flex max-h-[90%] w-[90%] max-w-lg flex-col items-center gap-2.5 bg-white px-8 pb-7 pt-10 text-gray-900 md:gap-5 md:px-16 md:py-14',
+            'fixed z-50 flex max-h-[90%] w-[90%] max-w-5xl flex-col gap-2 rounded-xl bg-white p-4 sm:p-8',
             className,
           )}>
           <DialogPrimitive.Close asChild>
@@ -61,18 +61,18 @@ export function Modal({ children, className, title, description }: ModalProps) {
           </DialogPrimitive.Close>
 
           {title && (
-            <DialogPrimitive.Title className="text-center text-2xl lowercase italic md:text-3xl">
+            <DialogPrimitive.Title className="text-4xl font-bold capitalize">
               {title}
             </DialogPrimitive.Title>
           )}
 
           {description && (
-            <DialogPrimitive.Description className="text-center text-xl lowercase italic md:text-2xl">
+            <DialogPrimitive.Description className="text-2xl font-bold">
               {description}
             </DialogPrimitive.Description>
           )}
 
-          <div className="mt-4 w-full">{children}</div>
+          <div className="mt-4 w-full overflow-y-auto">{children}</div>
         </motion.div>
       </DialogPrimitive.Content>
     </DialogPrimitive.Portal>
