@@ -1,8 +1,9 @@
+import { DOMAIN } from '@/constants/config';
 import type { Pokemon, PokemonList } from '@/types/pokemon';
 
 export const getPokemonList = async () => {
   try {
-    const response = await fetch('http://localhost:3000/api/pokemon');
+    const response = await fetch(`${DOMAIN}/api/pokemon`);
 
     if (!response.ok) {
       throw new Error('Failed to fetch data');
@@ -20,7 +21,7 @@ export const getPokemonList = async () => {
 
 export const getPokemon = async (id: number) => {
   try {
-    const response = await fetch(`http://localhost:3000/api/pokemon/${id}`);
+    const response = await fetch(`${DOMAIN}/pokemon/${id}`);
 
     if (!response.ok) {
       throw new Error('Failed to fetch data');
