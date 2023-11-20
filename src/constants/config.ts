@@ -20,5 +20,3 @@ export const STATLIST = {
     total: 150,
   },
 };
-
-export const DOMAIN = 'https://slvstr-pokedex.vercel.app';
