@@ -20,5 +20,3 @@ export const STATLIST = {
     total: 150,
   },
 };
-
-export const PLACEHOLDER_DOMAIN = 'http://localhost:3000';
