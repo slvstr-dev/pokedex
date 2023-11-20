@@ -26,7 +26,7 @@ export const FavoriteToggle = ({ className, index }: FavoriteToggleProps) => {
     <Button className={cn('p-0', className)} onClick={(event) => handleToggleFavorite(event)}>
       <Icon
         icon={isFavorite ? 'Heart' : 'HeartOutline'}
-        className={cn('w-8', isFavorite ? 'text-red-600' : 'text-black/50')}
+        className={cn('w-8 text-red-600', isFavorite ? 'text-red-600' : 'text-black/50')}
       />
     </Button>
   );

@@ -15,7 +15,7 @@ export const PokemonCard = ({ className, pokemon }: PokemonCardProps) => {
   return (
     <article
       className={cn(
-        'flex h-full w-full flex-col gap-6 rounded-xl bg-white p-4 transition hover:shadow-lg',
+        'flex flex-col gap-6 rounded-xl bg-white p-4 transition hover:shadow-lg',
         className,
       )}>
       <div className="relative flex aspect-square items-center justify-center rounded-xl bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-yellow-200 via-green-200 to-green-500">
