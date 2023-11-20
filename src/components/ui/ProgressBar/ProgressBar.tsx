@@ -9,6 +9,8 @@ export interface ProgressBarProps {
 }
 
 export const ProgressBar = ({ className, value, total, label }: ProgressBarProps) => {
+  const progress = (value / total) * 100;
+
   return (
     <Progress.Root
       className={cn('relative h-6 w-full overflow-hidden rounded-full bg-gray-400', className)}
@@ -16,7 +18,7 @@ export const ProgressBar = ({ className, value, total, label }: ProgressBarProps
       max={total}>
       <Progress.Indicator
         className="h-full w-full bg-gray-200"
-        style={{ transform: `translateX(-${100 - value}%)` }}
+        style={{ transform: `translateX(-${100 - progress}%)` }}
       />
 
       <span className="absolute inset-0 text-center font-bold">{label}</span>
