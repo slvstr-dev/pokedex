@@ -1,4 +1,3 @@
-import { DOMAIN } from '@/constants/config';
 import type { Pokemon, PokemonList } from '@/types/pokemon';
 
 export const getPokemonList = async () => {
