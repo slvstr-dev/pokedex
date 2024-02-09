@@ -20,3 +20,6 @@ export const STATLIST = {
     total: 150,
   },
 };
+
+export const SPRITES_URL =
+  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon';

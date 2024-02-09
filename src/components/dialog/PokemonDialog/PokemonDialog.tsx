@@ -1,19 +1,19 @@
 'use client';
 import Image from 'next/image';
 
-import { Suspense, useState, type PropsWithChildren } from 'react';
+import { useState, type PropsWithChildren, Suspense } from 'react';
 
 import { AnimatePresence } from 'framer-motion';
 
 import { Dialog } from '@/components/layout/Dialog/Dialog';
-import { TypeList } from '@/components/list/TypeList/TypeList';
+import { FavoriteToggle } from '@/components/ui/PokemonCard/internal/FavoriteToggle';
+import { SPRITES_URL } from '@/constants/config';
+import { MoveList } from '@/components/list/MoveList/MoveList';
+import { MoveListSkeleton } from '@/components/list/MoveList/internal/MoveListSkeleton';
 import { StatList } from '@/components/list/StatList/StatList';
 import { StatListSkeleton } from '@/components/list/StatList/internal/StatListSkeleton';
-import { MoveListSkeleton } from '@/components/list/MoveList/internal/MoveListSkeleton';
-import { MoveList } from '@/components/list/MoveList/MoveList';
+import { TypeList } from '@/components/list/TypeList/TypeList';
 import { TypeListSkeleton } from '@/components/list/TypeList/internal/TypeListSkeleton';
-import { FavoriteToggle } from '@/components/ui/PokemonCard/internal/FavoriteToggle';
-import { getPokemon } from '@/services/pokemonService';
 
 export interface PokemonDialogProps extends PropsWithChildren {
   className?: string;
@@ -40,7 +40,7 @@ export const PokemonDialog = ({ className, children, name, index }: PokemonDialo
                   height={150}
                   className="h-40 w-40 object-contain"
                   alt={`Sprite of ${name}`}
-                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`}
+                  src={`${SPRITES_URL}/${index}.png`}
                 />
               </div>
 
